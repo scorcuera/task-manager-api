@@ -1,13 +1,13 @@
-import { create, router as _router, defaults } from 'json-server'
-const server = create()
-const router = _router('data.json')
-const middlewares = defaults()
+import jsonServer from 'json-server';
 
-server.use(middlewares)
-server.use(router)
+const server = jsonServer.create();
+const router = jsonServer.router('data.json');
+const middlewares = jsonServer.defaults();
 
-const PORT = process.env.PORT || 3000
+server.use(middlewares);
+server.use(router);
 
-server.listen(PORT, () => {
-  console.log(`JSON Server is running on port ${PORT}`)
-})
+const port = process.env.PORT || 3000;
+server.listen(port, () => {
+  console.log(`JSON Server is running on port ${port}`);
+});
